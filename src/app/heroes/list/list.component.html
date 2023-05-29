@@ -1,0 +1,34 @@
+<h3>Listado de heroes</h3>
+
+<!-- si se cumple la condicion va a parecer el texto y si no se cumple va mostrar el template -->
+<div *ngIf="deletedHero; else noseBorroNada">
+  <h3>heroe borrado:  <small class="text-danger"><strong>{{deletedHero}}</strong></small></h3>
+</div>
+
+
+<!-- ng-template es parecido a un div pero no esta creado en html -->
+<ng-template #noseBorroNada>
+  <h3>No ha borrado nada.</h3>
+</ng-template>
+
+
+<!-- se va a mostrar solo si heroName es mayor a 0 -->
+<button
+  *ngIf="heroNames.length > 0"
+  class="btn btn-primary"
+  (click)="removeLastHero()"
+  class="btn btn-outline-danger">
+  Borrar heroe de la lista
+</button>
+
+
+
+<ol class="mt-2 list-group">
+
+  <li
+     *ngFor="let hero of heroNames"
+      class="list-group-item">
+      {{hero}}
+
+  </li>
+</ol>
