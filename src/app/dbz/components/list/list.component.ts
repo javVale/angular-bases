@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Character } from '../../interfaces/character.interface';
 
+
 @Component({
   selector: 'dbz-list',
   templateUrl: './list.component.html',
@@ -10,20 +11,24 @@ export class ListComponent {
 
   @Input()
   public characterList: Character[]=[{
+
     name: 'Trunks',
     power: 10
   }]
 
   // variable para poder enviar al componente padre donde esta el erray mediante el metodo onDeteleCharacter
   @Output()
-  public onDelete: EventEmitter<number> = new EventEmitter();
+  public onDelete: EventEmitter<string> = new EventEmitter();
 
 
   //metodo para que el boton envie el indice
-  onDeleteCharacter(index: number): void{
+  onDeleteCharacter(id?: string): void{
     //TODO: Emitir el ID del personaje
     // console.log(index);
-    this.onDelete.emit(index);
+
+    //si no existe el id
+    if(!id)return;
+    this.onDelete.emit(id);
   }
 
 }

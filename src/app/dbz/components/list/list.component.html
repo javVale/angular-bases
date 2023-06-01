@@ -2,6 +2,7 @@
         <ul class="list-group">
           <!-- la variable i la utilizamos para enumerar cada uno de nuestros items en el listado -->
             <li *ngFor="let character of characterList;
+
               let i = index;
               let isFirst = first;
               let isLast = last;
@@ -26,7 +27,7 @@
               </div>
 
                 <!-- evento click envia por medio del metodo onDeleteCharacter el indice al componente padre donde esta el array y en donde vamos a eliminarlo -->
-              <button class="btn btn-danger" (click)="onDeleteCharacter(i)">X</button>
+              <button class="btn btn-danger" (click)="onDeleteCharacter(character.id)">X</button>
 
 
 

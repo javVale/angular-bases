@@ -5,7 +5,9 @@
 
     <div class="col">
       <!-- evento entre parentisis pasandole el indice -->
-        <dbz-list [characterList]="character" (onDelete)="onDeleteCharacter($event)" ></dbz-list>
+        <dbz-list [characterList]="characters"
+          (onDelete)="onDeleteCharacter($event)" >
+        </dbz-list>
     </div>
 
     <div class="col">

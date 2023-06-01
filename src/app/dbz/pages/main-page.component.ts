@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Character } from '../interfaces/character.interface';
+import { DbzService } from '../services/dbz.service';
 
 @Component({
   selector: 'app-dbz-main-page',
@@ -7,30 +8,20 @@ import { Character } from '../interfaces/character.interface';
 })
 
 export class MainPageComponent  {
+  constructor(private dbzService: DbzService){}
 
-  public character: Character[] = [{
-    name: 'Krillin',
-    power: 1000
-  },{
-    name: 'Goku',
-    power: 9500
-  },{
-    name:'Vegueta',
-    power: 9000
-  }];
 
-  //metodo q recibe un character de tipo character
-  onNewCharacter(character: Character): void {
-    // console.log('MainPage');
-    // console.log(character);
+  get characters(): Character []{
 
-    this.character.push(character);
+    //return this.dbzService.character;
+    return [...this.dbzService.character];
   }
 
-  //metodo para borrar el character por medio del indice
-  onDeleteCharacter(index: number){
-    // con splice le decimos que borre el index pero 1 solo elmento
-    this.character.splice(index, 1);
+  onDeleteCharacter(id:string):void{
+    this.dbzService.deleteCharacterById(id);
   }
 
+  onNewCharacter (character:Character): void{
+    this.dbzService.addCharacter(character);
+  }
  }
